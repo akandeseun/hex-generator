@@ -10,35 +10,56 @@
 <body>
   <?php
 
-  // rgb(255, 255, 255)
-  $rgb = [0, 0, 0];
-  $rgbIndex = [0, 1, 2];
+  // rgb(red, green, blue)
+  $rgb = [255, 255, 255];
+  $randomIndex = rand(0, 2);
+  $randomColorStart = dechex(rand(0, 255));
+  $randomColorEnd = dechex(rand(0, 255));
+
   $hexCode = [00, 00, 00];
 
   $colorNumbers = [];
 
-  $colorsHex = [];
+  $hexcodes = [];
+
+  // 1 - red, 2 - blue, 3 - green
+  $colorsHex = [
+    1 => [],
+    2 => [],
+    3 => []
+  ];
 
   // populate color numbers array with 64 random numbers between 0 - 255
-  for ($i = 0; $i < 10; $i++) {
-    $colorNumbers[$i] = rand(0, 255);
+  for ($i = 0; $i < 64; $i++) {
+    $randomValues = rand(0, 255);
+    $colorNumbers[$i] = $randomValues;
+
+    // $colorsHex[$randomIndex][$i] = $randomValues;
   }
 
-  sort($colorNumbers);
+  // rsort($colorsHex[$randomIndex]);
 
-  for ($i = 0; $i < 10; $i++) {
+  for ($i = 0; $i < 64; $i++) {
     $x = dechex($colorNumbers[$i]);
-    $colorsHex[$i] = "#0000{$x}";
+    if (strlen($x) == 1) {
+      $x .= $x;
+    }
+
+    $hexcodes[$i] = $x;
   }
 
   ?>
 
-  <ol>
-    <?php foreach ($colorsHex as $color) : ?>
 
-      <li style="color: <?= $color ?>">something</li>
+
+
+  <ol>
+    <?php foreach ($hexcodes as $color) : ?>
+
+      <li style="color: <?= $fullColor ?>">something</li>
     <?php endforeach; ?>
   </ol>
+
 </body>
 
 </html>
