@@ -37,7 +37,7 @@
     // $colorsHex[$randomIndex][$i] = $randomValues;
   }
 
-  // rsort($colorsHex[$randomIndex]);
+  rsort($colorNumbers);
 
   for ($i = 0; $i < 64; $i++) {
     $x = dechex($colorNumbers[$i]);
@@ -48,13 +48,14 @@
     $hexcodes[$i] = $x;
   }
 
+
   ?>
-
-
 
 
   <ol>
     <?php foreach ($hexcodes as $color) : ?>
+
+      <?php $fullColor = "#$randomColorStart" . "$randomColorEnd" . "$color"; ?>
 
       <li style="color: <?= $fullColor ?>">something</li>
     <?php endforeach; ?>
